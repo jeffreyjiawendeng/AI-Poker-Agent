@@ -210,7 +210,7 @@ class RoundManager:
   @classmethod
   def __agree_logic_bug_catch(self, state):
     if state["table"].seats.count_active_players() == 0:
-      raise "[__is_everyone_agreed] no-active-players!!"
+      raise Exception("[__is_everyone_agreed] no-active-players!!")
 
   @classmethod
   def __is_agreed(self, max_pay, player):

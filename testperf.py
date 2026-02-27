@@ -1,9 +1,5 @@
-import sys
-sys.path.insert(0, './pypokerengine/api/')
-import game
-setup_config = game.setup_config
-start_poker = game.start_poker
 import time
+from pypokerengine.api.game import setup_config, start_poker
 from argparse import ArgumentParser
 
 
@@ -20,8 +16,10 @@ $ python testperf.py -n1 "Random Warrior 1" -a1 RandomPlayer -n2 "Random Warrior
 def testperf(agent_name1, agent1, agent_name2, agent2):		
 
 	# Init to play 500 games of 1000 rounds
-	num_game = 500
-	max_round = 1000
+	# num_game = 500
+	# max_round = 1000
+	num_game = 10
+	max_round = 20
 	initial_stack = 10000
 	smallblind_amount = 20
 
@@ -61,7 +59,7 @@ def testperf(agent_name1, agent1, agent_name2, agent2):
 		print("\n Congratulations! " + agent_name1 + " has won.")
 		# print("\n Random Player has won!")
 	else:
-		Print("\n It's a draw!") 
+		print("\n It's a draw!") 
 
 
 def parse_arguments():
