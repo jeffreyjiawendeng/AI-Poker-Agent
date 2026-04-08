@@ -3,6 +3,13 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Legacy / scratch files
+legacy/
+
+# Arena results (generated output, not source)
+poker_agent_arena/results/
+arena_results.json
+
 # C extensions
 *.so
 
@@ -71,3 +78,6 @@ pyrightconfig.json
 # OS
 .DS_Store
 Thumbs.db
+
+# Legacy code
+legacy/

@@ -1,0 +1,55 @@
+# Arena configuration
+# Run `python -m poker_agent_arena.arena.arena --help` for CLI options.
+# Run `make arena` to execute with these defaults.
+# Edit the values below to change game settings for the entire project.
+
+game:
+  # Number of games per matchup
+  num_games: 50
+  # Maximum rounds per game
+  max_round: 100
+  # Starting chip stack per player
+  initial_stack: 1000
+  # Small blind amount (big blind is 2x = 20)
+  small_blind_amount: 10
+
+arena:
+  # Test each custom agent against every baseline agent first
+  test_vs_baselines: true
+  # Run a round-robin tournament among all custom agents
+  round_robin: true
+  # CI mode (--ci flag): exit 1 if a custom agent loses to any of these baselines.
+  # FoldAgent always folds, so losing to it indicates a broken agent.
+  ci_trivial_baselines:
+    - FoldAgent
+
+# ── Baseline agents ─────────────────────────────────────────────────────────
+# Do not remove these. Add new baselines following the same schema.
+baselines:
+  - name: FoldAgent
+    module: poker_agent_arena.agents.baseline.fold_agent
+    class: FoldAgent
+
+  - name: CallAgent
+    module: poker_agent_arena.agents.baseline.call_agent
+    class: CallAgent
+
+  - name: RaiseAgent
+    module: poker_agent_arena.agents.baseline.raise_agent
+    class: RaiseAgent
+
+  - name: RandomAgent
+    module: poker_agent_arena.agents.baseline.random_agent
+    class: RandomAgent
+
+  - name: RuleBasedAgent
+    module: poker_agent_arena.agents.baseline.rule_based_agent
+    class: RuleBasedAgent
+
+# ── Custom (non-trivial) agents ──────────────────────────────────────────────
+# Add your agent here. Each entry becomes a competitor in the round-robin and
+# is automatically tested against every baseline when you open a PR.
+custom_agents:
+  - name: CustomAgent
+    module: poker_agent_arena.agents.custom.custom_agent
+    class: CustomAgent

@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "custom-agent-env"
+version = "0.1.0"
+description = "Isolated environment for CustomAgent — add ML/RL deps here"
+requires-python = ">=3.8"
+dependencies = [
+    "PyPokerEngine",
+    "pyyaml>=6.0",
+    # ── Add agent-specific dependencies below ────────────────────────────
+    # "numpy>=1.24",
+    # "torch>=2.0",
+    # "scikit-learn>=1.3",
+]

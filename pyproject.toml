@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "poker-agent-arena"
+version = "0.1.0"
+description = "AI Poker Agent Testing Arena"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "PyPokerEngine",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "flake8>=6.0",
+    "black>=23.0",
+]
+
+[project.scripts]
+poker-arena    = "poker_agent_arena.arena.arena:main"
+poker-testperf = "poker_agent_arena.arena.testperf:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["poker_agent_arena*", "pypokerengine*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py38", "py39", "py310", "py311"]
+
+[tool.flake8]
+max-line-length = 100
+exclude = [".git", "__pycache__", "envs", "*.egg-info"]
